@@ -1,0 +1,39 @@
+name: Backend CI/CD
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'backend/**'
+  pull_request:
+    paths:
+      - 'backend/**'
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - uses: dorny/paths-filter@v3
+        id: changes
+        with:
+          filters: |
+            backend:
+              - 'backend/**'
+            frontend:
+              - 'frontend/**'
+
+      - name: Get changed folders
+        if: steps.changes.outputs.backend == 'true'
+        id: get-changed-folders
+        run: |
+          echo "backend changed."
+
+      - name: Get changed folders
+        if: steps.changes.outputs.frontend == 'true'
+        id: get-changed-folders
+        run: |
+          echo "frontend changed."
