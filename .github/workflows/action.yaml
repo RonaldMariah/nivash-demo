@@ -21,14 +21,14 @@ jobs:
             frontend:
               - 'frontend/**'
 
-      - name: Get changed folders
+      - name: Check for backend changes
         if: steps.changes.outputs.backend == 'true'
-        id: get-changed-folders
+        id: backend-task
         run: |
           echo "backend changed."
 
-      - name: Get changed folders
+      - name: Check for frontend changes
         if: steps.changes.outputs.frontend == 'true'
-        id: get-changed-folders
+        id: frontend-task
         run: |
           echo "frontend changed."
