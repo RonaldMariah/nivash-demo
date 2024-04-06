@@ -1,0 +1,17 @@
+name: Backend CI/CD
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'backend/**'
+  pull_request:
+    paths:
+      - 'backend/**'
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      echo "backend changed."
