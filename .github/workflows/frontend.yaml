@@ -14,4 +14,10 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
     steps:
-      echo "frontend changed."
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: Get changed folders
+        id: get-changed-folders
+        run: |
+          echo "frontend changed."
